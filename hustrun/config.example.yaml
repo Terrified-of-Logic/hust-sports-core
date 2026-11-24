@@ -1,0 +1,37 @@
+# hustrun 桌面模式配置示例。
+# 复制成 config.yaml 后按需修改；凭证与配置都已被 .gitignore 忽略。
+#
+# 相对路径以本配置文件所在目录为基准解析。
+
+paths:
+  # `hustrun login` 会写入这三个文件；也可以从已登录的设备导出后放进来。
+  header_xml: ".credentials/HEADER.xml"
+  userinfo_xml: ".credentials/USERINFO.xml"
+  school_xml: ".credentials/SCHOOL.xml"
+
+upload:
+  # HUST 1.0.9 抓包确认：AES/ECB/PKCS7 后 Base64；hex 仅用于对照实验。
+  aes_encoding: "base64"
+  token_header: "cgAuthorization"
+  # 默认在同一流程里补传一份合成的传感器数据；需要跳过时也支持 --skip-sensor。
+  skip_sensor: false
+
+device:
+  # 与登录/签名所用设备保持一致（取自经授权的抓包记录）。
+  imei: "00000000-0000-0000-0000-000000000000"
+  oaid: ""
+  app_key: ""
+  user_agent: "hzkjapp/1.0.9(Linux;Android 15;OnePlus/TP1A.220905.001)"
+  # v1 = MD5(seed)；留空时对当前毫秒时间做 MD5。
+  v1_seed: ""
+  is_root: false
+  phone_version: "PJE110,35,15|1.0.9"
+
+data:
+  # 可选：真机导出的传感器快照。留空则按轨迹时长合成一份。
+  sensor_path: ""
+  # 可选：文件 SHA-256，配置后快照被改动会拒绝使用。
+  sensor_sha256: ""
+
+# 动态签名器完全在进程内计算：不读 APK/.so、不启动 JVM，因此这里没有
+# signer 配置项。

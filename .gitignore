@@ -1,0 +1,11 @@
+# 本地凭证、配置与运行产物
+credentials/
+.credentials/
+config.yaml
+.sessions/
+logs/
+*.bak
+
+# Go
+/hustrun.exe
+/dist/

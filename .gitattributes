@@ -1,0 +1,13 @@
+# 统一行尾：仓库内保存 LF，工作区也检出 LF，避免跨平台整文件 diff
+* text=auto eol=lf
+
+*.go    text eol=lf
+*.md    text eol=lf
+*.yaml  text eol=lf
+*.yml   text eol=lf
+*.json  text eol=lf
+*.xml   text eol=lf
+
+# 二进制/生成物
+*.exe   binary
+*.png   binary
